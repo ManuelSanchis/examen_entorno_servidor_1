@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<h1>EXAMEN 1º TRIMESTRE</h1>
+	<a th:href="@{/}">Comerciales</a><br><br>
+	<a th:href="@{/clientes}">Clientes</a><br><br>
+	<h2>Lista de Pedidos</h2><br><br>
+	<a th:href="@{/altaPedidos}">Nuevo Pedido</a><br><br>
+	<table border="2" width=100%>
+		<tr>
+			<th>ID</th>
+			<th>Total</th>
+			<th>Ver detalle</th>
+			<th>Ver Cliente</th>
+			<th>Ver Comercial</th>
+			<th>Borrar Pedido</th>
+		</tr>
+		<tr th:each="pedido : ${pedidos}">
+			<td th:text="${pedido.idPedido}"></td>
+			<td th:text="${pedido.total}"></td>
+			<td><a th:href="@{pedidos/pedidoDetalle/{id}(id=${pedido.idPedido})}">Ver Detalle</a></td>
+			<td><a th:href="@{pedidos/clientePorPedido/{id}(id=${pedido.idPedido})}">Ver Cliente</a></td>
+			<td><a th:href="@{pedidos/comercialPorPedido/{id}(id=${pedido.idPedido})}">Ver Comercial</a></td>
+			<td><a th:href="@{pedidos/pedidoBorrar/{id}(id=${pedido.idPedido})}">Borrar</a></td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+    <h2>Detalles del Pedido</h2><br><br>
+    <table border="2" width=100%>
+    	<tr>
+			<th>ID</th>
+			<th>Fecha</th>
+			<th>Total</th>
+			<th>Cliente</th>
+			<th>Comercial</th>
+		</tr>
+        <tr>
+            <th th:text="${pedido.idPedido}"></th>
+            <td th:text="${pedido.fecha}"></td>
+            <td th:text="${pedido.total}"></td>
+            <td th:text="${pedido.cliente}"></td>
+            <td th:text="${pedido.comercial}"></td>
+        </tr>
+    </table><br><br>
+    <a th:href="@{/pedidos}">Volver a Pedidos</a>
+</body>
+</html>

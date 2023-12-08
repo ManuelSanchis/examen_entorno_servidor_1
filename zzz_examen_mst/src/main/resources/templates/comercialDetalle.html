@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+    <h2>Detalles del Comercial</h2><br><br>
+    <table border="2" width=100%>
+    	<tr>
+			<th>ID</th>
+			<th>Nombre</th>
+			<th>Primer Apellido</th>
+			<th>Segundo Apellido</th>
+			<th>Comision</th>
+			<th>Clientes</th>
+		</tr>
+        <tr>
+            <th th:text="${comercial.idComercial}"></th>
+            <td th:text="${comercial.nombre}"></td>
+            <td th:text="${comercial.apellido1}"></td>
+            <td th:text="${comercial.apellido2}"></td>
+            <td th:text="${comercial.comision}"></td>
+            <td th:text="${clientes}"></td>
+        </tr>
+    </table><br><br>
+    <a th:href="@{/}">Volver a Comerciales</a>
+</body>
+</html>

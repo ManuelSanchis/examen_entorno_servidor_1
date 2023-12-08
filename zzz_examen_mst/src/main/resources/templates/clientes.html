@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<h1>EXAMEN 1º TRIMESTRE</h1>
+	<a th:href="@{/}">Comerciales</a><br><br>
+	<a th:href="@{/pedidos}">Pedidos</a><br><br>
+	<h2>Lista de Clientes</h2><br><br>
+	<a th:href="@{/clientes/clienteAlta}">Nuevo Cliente</a><br><br>
+	<table border="2" width=100%>
+		<tr>
+			<th>ID</th>
+			<th>Nombre</th>
+			<th>Primer Apellido</th>
+			<th>Segundo Apellido</th>
+			<th>Ver Detalle</th>
+			<th>Ver Pedidos</th>
+			<th>Borrar Cliente</th>
+		</tr>
+		<tr th:each="cliente : ${clientes}">
+			<td th:text="${cliente.idCliente}"></td>
+			<td th:text="${cliente.nombre}"></td>
+			<td th:text="${cliente.apellido1}"></td>
+			<td th:text="${cliente.apellido2}"></td>
+			<td><a th:href="@{clientes/clienteDetalle/{id}(id=${cliente.idCliente})}">Ver Detalle</a></td>
+			<td><a th:href="@{clientes/clientePedidos/{id}(id=${cliente.idCliente})}">Ver Pedidos</a></td>
+			<td><a th:href="@{clientes/clienteBorrar/{id}(id=${cliente.idCliente})}">Borrar</a></td>	
+		</tr>
+	</table>
+</body>
+</html>
