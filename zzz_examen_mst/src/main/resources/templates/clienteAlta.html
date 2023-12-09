@@ -6,8 +6,19 @@
 </head>
 <body>
 	<h2>Dar de alta a un nuevo cliente</h2><br><br>
+	<!-- 
+	 Utilizando Thymeleaf para definir la acción del formulario
+	 La expresión @{} se utiliza para construir URLs relativas y completas
+	 En este caso, se está construyendo la URL relativa para la acción del formulario
+	 El objeto cliente se establece como un atributo del modelo para el formulario mediante th:object
+	 El método HTTP utilizado es POST, como se especifica con th:method
+	-->
 	<form th:action = "@{/clientes/clienteAlta}" th:object="${cliente}" th:method="post">
 		<label>Nombre : </label>
+		<!-- 
+      	Thymeleaf se utiliza para vincular el campo de entrada con la propiedad "nombre" del objeto cliente
+      	La expresión th:field="*{nombre}" indica que el campo está vinculado bidireccionalmente a la propiedad "nombre" del objeto cliente
+    	-->
 		<input type="text" th:field="*{nombre}" />
 		<label>Primer Apellido : </label>
 		<input type="text" th:field="*{apellido1}" />

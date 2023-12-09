@@ -1,8 +1,3 @@
-/*
- * En el HomeController trabajamos con comerciales y accedemos a las paginas que 
- * nos permiten trabajar con clientes y pedidos
- */
-
 package unir.exa.ventas.controller;
 
 import java.util.List;
@@ -31,32 +26,34 @@ public class ComercialController {
 	// ----------------
 	@GetMapping({"/"})
 	public String verComerciales(Model model) {
-	    // Creamos una lista para almacenar los comerciales
 	    List<Comercial> comerciales = comercialDao.buscarTodos();
-	    // Agregamos la lista de comerciales al model con un nombre específico
+	    
 	    model.addAttribute("comerciales", comerciales);
 
 	    return "comerciales";
 	}
 	
 	// ----------------
+	// Controlador para manejar la solicitud de ver los detalles de un comercial con sus clientes
+	
+	// Método para manejar peticiones GET a la URL "/comercialDetalle/{idComercial}"
 	@GetMapping({"/comercialDetalle/{idComercial}"})
 	public String comercialVerDetalle(@PathVariable("idComercial") int idComercial, Model model) {
-		// Creamos el objeto comercial
+		// Busca el comercial en la base de datos utilizando el idComercial proporcionado
 		Comercial comercial = comercialDao.buscarUno(idComercial);
-		// Creamos una lista para almacenar los clientes del comercial
+		// Obtiene la lista de clientes asociados a este comercial
 		List<Cliente> clientes = pedidoDao.buscarPorComercial(idComercial);
 		
-		// Comprueba si el comercial existe
+		// Verifica si el comercial existe
 		if(comercial != null) {
-			// Agregamos el comercial al model con un nombre especifico
+			// Agrega el comercial al modelo con el nombre "comercial"
 			model.addAttribute("comercial", comercial);
-			// Agregamos los clientes al model con un nombre especifico
+			// Agrega la lista de clientes al modelo con el nombre "clientes"
 			model.addAttribute("clientes", clientes);
-			
+			// Devuelve el nombre de la vista que se mostrará al usuario
 			return "comercialDetalle";
 		}
-		
+		// Si el comercial no existe, redirige a la URL "/"
 		return "forward:/";
 	}
 

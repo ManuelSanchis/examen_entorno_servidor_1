@@ -15,6 +15,9 @@
 			<th>Pedidos</th>
 		</tr>
         <tr>
+        	<!-- 
+      		Celda de encabezado que muestra el ID del cliente utilizando la expresión th:text para la evaluación de la propiedad "idCliente"
+    		-->
             <th th:text="${cliente.idCliente}"></th>
             <td th:text="${cliente.nombre}"></td>
             <td th:text="${cliente.apellido1}"></td>

@@ -6,6 +6,10 @@
 </head>
 <body>
 	<h2>Modificar el Cliente</h2>
+	<!-- 
+  	Formulario para la modificación de un cliente 
+  	Utiliza Thymeleaf para definir la acción del formulario, el método HTTP y vincular campos de entrada a propiedades del objeto cliente
+	-->
 	<form th:action="@{/clientes/clienteModificar/{id}(id=${cliente.idCliente})}" th:method="post" th:object="${cliente}">
 	<label>Nombre</label>
 	<input type="text" th:field="*{nombre}"/>
