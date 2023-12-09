@@ -16,6 +16,7 @@
 			<th>Segundo Apellido</th>
 			<th>Ver Detalle</th>
 			<th>Ver Pedidos</th>
+			<th>Modificar Cliente</th>
 			<th>Borrar Cliente</th>
 		</tr>
 		<tr th:each="cliente : ${clientes}">
@@ -25,6 +26,7 @@
 			<td th:text="${cliente.apellido2}"></td>
 			<td><a th:href="@{clientes/clienteDetalle/{id}(id=${cliente.idCliente})}">Ver Detalle</a></td>
 			<td><a th:href="@{clientes/clientePedidos/{id}(id=${cliente.idCliente})}">Ver Pedidos</a></td>
+			<td><a th:href="@{clientes/clienteModificar/{id}(id=${cliente.idCliente})}">Modificar</a></td>
 			<td><a th:href="@{clientes/clienteBorrar/{id}(id=${cliente.idCliente})}">Borrar</a></td>	
 		</tr>
 	</table>

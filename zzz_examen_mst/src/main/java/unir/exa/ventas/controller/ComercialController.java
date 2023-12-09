@@ -89,7 +89,29 @@ public class ComercialController {
 		List<Pedido> pedidos = pedidoDao.buscarPedidoPorComercial(idComercial);
 		model.addAttribute("pedidos", pedidos);
 		
-		return "comercialPedidos";
+		return "comercialPedidos"; 
+	}
+	
+	// ----------------
+	@GetMapping({"/comercialModificar/{idComercial}"})
+	public String comercialModificar(@PathVariable("idComercial") int idComercial, Model model) {
+		Comercial comercial = comercialDao.buscarUno(idComercial);
+		model.addAttribute("comercial", comercial);
+		
+		return "comercialModificar";
+	}
+	
+	@PostMapping({"/comercialModificar/{idComercial}"})
+	public String comercialModificar(@PathVariable("idComercial") int idComercial, Comercial comercial) {
+		Comercial comercialP = comercialDao.buscarUno(idComercial);
+		
+		comercialP.setNombre(comercial.getNombre());
+		comercialP.setApellido1(comercial.getApellido1());
+		comercialP.setApellido2(comercial.getApellido2());
+		comercialP.setComision(comercial.getComision());
+		comercialDao.modificar(comercialP);
+		
+		return "redirect:/";
 	}
 	
 }

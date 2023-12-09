@@ -91,4 +91,27 @@ public class ClienteController {
 		return "clientePedidos";
 	}
 	
+	// ----------------
+	@GetMapping({"/clientes/clienteModificar/{idCliente}"})
+	
+	public String clienteModificar(@PathVariable("idCliente") int idCliente, Model model) {
+		Cliente cliente = clienteDao.buscarUno(idCliente);
+		model.addAttribute("cliente", cliente);
+		
+		return "clienteModificar";
+	}
+	
+	@PostMapping({"/clientes/clienteModificar/{idCliente}"})
+	public String clienteModificar(@PathVariable("idCliente") int idCliente, Cliente cliente) {
+		Cliente clienteP = clienteDao.buscarUno(idCliente);
+		
+		clienteP.setNombre(cliente.getNombre());
+		clienteP.setApellido1(cliente.getApellido1());
+		clienteP.setApellido2(cliente.getApellido2());
+		clienteP.setCategoria(cliente.getCategoria());
+		clienteDao.modificar(clienteP);
+		
+		return "redirect:/clientes";
+	}
+	
 }

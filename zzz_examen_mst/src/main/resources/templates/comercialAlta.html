@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h2>Dar de alta a un nuevo comercial </h2><br><br>
-	<form th:action="@{/ComercialAlta}" th:object="${comercial}" th:method="post">
+	<form th:action="@{/comercialAlta}" th:object="${comercial}" th:method="post">
 	    <label>Nombre :</label>
 	    <input type="text" th:field="*{nombre}" />
 	    <label>Primer Apellido :</label>

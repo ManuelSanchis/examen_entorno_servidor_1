@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Modificar</title>
+</head>
+<body>
+	<h2>Modificar el Comercial</h2>
+	<form th:action="@{/comercialModificar/{id}(id=${comercial.idComercial})}" th:method="post" th:object="${comercial}">
+	<label>Nombre</label>
+	<input type="text" th:field="*{nombre}"/>
+	<label>Apellido 1</label>
+	<input type="text" th:field="*{apellido1}"/>
+	<label>Apellido 2</label>
+	<input type="text" th:field="*{apellido2}"/>
+	<label>Comisión</label>
+	<input type="text" th:field="*{comision}"/>
+	<button type="submit">Modificar</button>
+	</form>
+	<br><br>
+	<button><a th:href="@{/}">Volver</a></button>
+</body>
+</html>
