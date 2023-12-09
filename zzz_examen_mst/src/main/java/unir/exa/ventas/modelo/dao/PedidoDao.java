@@ -13,6 +13,7 @@ public interface PedidoDao {
 	// Read
 	Pedido buscarUno(int idPedido);
 	List<Pedido> buscarTodos();
+	// Metodos propios del Interface
 	List<Pedido> buscarPedidoPorCliente(int idCliente);
 	List<Pedido> buscarPedidoPorComercial(int idComercial);
 	List<Cliente> buscarPorComercial(int idComercial);

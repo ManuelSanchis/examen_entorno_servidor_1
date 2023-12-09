@@ -20,6 +20,8 @@ import unir.exa.ventas.modelo.entity.Pedido;
 @Controller // Para indicar que la clase es un controlador se anota con @Controller 
 public class ClienteController {
 	
+	// Desde el controlador llamamos a los métodos del daoImpl
+	
 	// Indica que Spring debe automáticamente inyectar una instancia de las clases especificadas.
 	@Autowired
 	private ClienteDao clienteDao;
@@ -32,7 +34,7 @@ public class ClienteController {
 	// Controlador para manejar la solicitud de ver la lista de todos los clientes
 
 	// Método para manejar peticiones GET a la URL "/clientes"
-	@GetMapping({"/clientes"})
+	@GetMapping("/clientes")
 	public String verClientes(Model model) {
 		// Llama al método buscarTodos del ClienteDao para obtener la lista de todos los clientes
 		List<Cliente> clientes = clienteDao.buscarTodos();
@@ -70,7 +72,7 @@ public class ClienteController {
 	// Controlador para gestionar la creación de un nuevo cliente
 	
 	// Método para manejar peticiones GET a la URL "/clientes/clienteAlta"
-	@GetMapping({"/clientes/clienteAlta"})
+	@GetMapping("/clientes/clienteAlta")
 	public String clienteDarAlta(Cliente cliente, Model model) {
 		// Agrega el cliente al model con un nombre especifico
 		model.addAttribute("cliente", cliente);
@@ -137,6 +139,7 @@ public class ClienteController {
 		// Llama al método buscarUno del ClienteDao para obtener el cliente existente con el ID especificado
 		Cliente clienteP = clienteDao.buscarUno(idCliente);
 		// Actualiza los atributos del cliente existente con los nuevos valores proporcionados
+		clienteP.setNombre(cliente.getNombre());
 		clienteP.setApellido1(cliente.getApellido1());
 		clienteP.setApellido2(cliente.getApellido2());
 		clienteP.setCategoria(cliente.getCategoria());
